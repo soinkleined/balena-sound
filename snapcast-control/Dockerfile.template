@@ -1,0 +1,21 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
+
+RUN install_packages python3 \
+    python3-pip \
+    python3-virtualenv \
+    python3-setuptools \
+    git
+
+RUN pip3 install wheel
+
+RUN pip3 install Flask snapcast
+
+RUN cd /usr/src/ && \
+    git clone https://github.com/xkonni/snapcastr && \
+    cd snapcastr && \
+    pip3 install .
+
+COPY start.sh /usr/src/
+RUN chmod +x /usr/src/start.sh
+
+CMD [ "/bin/bash", "/usr/src/start.sh" ]

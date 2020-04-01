@@ -28,7 +28,7 @@
 
 # Setup and use
 
-Running this project is as simple as deploying it to a balenaCloud application; no additional configuration is required (unless you're using a DAC HAT).
+Running this project is as simple as deploying it to a balenaCloud application; no additional configuration is required (unless you're using a DAC HAT). All the setup steps below are done from your MacOS, Windows or Linux computer, not the Raspberry Pi.
 
 ### Setup the Raspberry Pi
 
@@ -68,7 +68,7 @@ You can configure some features of balenaSound by using environment variables. T
 ### Change device name
 
 By default, your device will be named `balenaSound xxxx`. This name will show within Airplay device lists, for Spotify Connect and when searching for devices using Bluetooth.
-You can change this using `BLUETOOTH_DEVICE_NAME` environment variable that can be set in balena dashboard.
+You can change this using `DEVICE_NAME` environment variable that can be set in balena dashboard.
 
 ### Set output volumes
 
@@ -85,6 +85,16 @@ By default, balenaSound will start in multi-room mode. When running multi-room y
 If you don't want to use multi-room or you only have one device, you can disable it by creating the `DISABLE_MULTI_ROOM` variable (with any value, for example: `1`).
 
 **Note:** Multi-room requires a network router that supports IP multicast/broadcast (most modern routers do).
+
+### Client Only Multi-room
+
+By default, balenaSound lets you connect and stream audio from every device on the fleet. If you prefer to have one or more devices "hidden" in the network but still capable of playing multi-room audio you can set the device to Client Only mode.
+
+Client Only mode only runs the services needed to synchronize and play the audio that is being streamed from the multi-room master server; all other services will be disabled. This makes for less clutter in the devices overview when connecting from Spotify, Airplay or Bluetooth and lowers the load on the devices running Client Only mode.
+
+If you want to set a device in Client Only mode, create a `CLIENT_ONLY_MULTI_ROOM` variable with value `1`.
+
+**Note**: Client Only mode only works if multi-room mode is enabled. When you disable multi-room mode, the `CLIENT_ONLY_MULTI_ROOM` variable is ignored to prevent all services being down.
 
 ### Set bluetooth PIN code
 
@@ -122,6 +132,10 @@ If you are using a DAC board, you will need to make a couple of changes to the d
 If you have a Spotify Premium account you can stream locally without any configuration, but if you want to use Spotify Connect over the internet you will need to provide your Spotify credentials.
 
 To enable Spotify login you can add your username/e-mail and password, which are set with two environment variables: `SPOTIFY_LOGIN` and `SPOTIFY_PASSWORD`.  
+
+## Acknowledgements
+
+This project is made possible by the awesome work of various open source projects, including [Shairport Sync](https://github.com/mikebrady/shairport-sync), [Raspotify](https://github.com/dtcooper/raspotify) and [Snapcast](https://github.com/badaix/snapcast).
 
 ---
 
