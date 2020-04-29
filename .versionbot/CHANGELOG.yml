@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add DISABLE_BLUETOOTH variable
+      hash: 71b108f26181fd04d5c18387f12ef45b7301c714
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Connects-to: '#174'
+        connects-to: '#174'
+      author: Alex
+  version: 2.2.3
+  date: 2020-04-29T20:18:10.352Z
+- commits:
     - subject: Add parsable CHANGELOG
       hash: 1c4202eb891275109edb1365bd6fae14ac28f8ee
       body: ''
