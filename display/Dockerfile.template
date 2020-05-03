@@ -14,11 +14,9 @@ RUN echo "#!/bin/bash" > /etc/X11/xinit/xserverrc \
   && echo "" >> /etc/X11/xinit/xserverrc \
   && echo 'exec /usr/bin/X -s 0 dpms -nolisten tcp "$@"' >> /etc/X11/xinit/xserverrc
 
-# Setting working directory
-WORKDIR /usr/src/app
-
-COPY start.sh start.sh
+COPY start.sh /usr/src/
+RUN chmod +x /usr/src/start.sh
 
 ENV UDEV=1
 
-CMD ["bash", "start.sh"]
+CMD [ "/bin/bash", "/usr/src/start.sh" ]
