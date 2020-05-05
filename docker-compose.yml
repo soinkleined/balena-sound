@@ -62,6 +62,11 @@ services:
     restart: on-failure 
     network_mode: host 
     privileged: true
+  snapcast-control:
+    build: ./display
+    restart: on-failure 
+    network_mode: host 
+    privileged: true
 
 volumes:
   spotifycache:
