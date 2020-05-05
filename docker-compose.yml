@@ -62,7 +62,10 @@ services:
     restart: on-failure 
     network_mode: host 
     privileged: true
-  snapcast-control:
+    ports:
+      - "5000:5000/udp"
+      - "5000:5000/tcp"
+  display:
     build: ./display
     restart: on-failure 
     network_mode: host 
