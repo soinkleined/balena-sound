@@ -15,7 +15,7 @@ const fleetSubscriber = new cote.Subscriber({ name: 'Fleet subscriber' })
 if (process.env.BALENA_DEVICE_TYPE !== 'raspberry-pi' && !process.env.CLIENT_ONLY_MULTI_ROOM) {
   snapcastServer.connect()
   snapcastServer.onPlayback((data) => {
-    fleetPublisher.publish('fleet-update', { master: getIPAddress() })
+    fleetPublisher.publish('fleet-update', { master: process.env.MULTI_ROOM_SERVER || getIPAddress() })
   })
 }
 
@@ -34,7 +34,7 @@ fleetSubscriber.on('fleet-update', (update) => {
 fleetSubscriber.on('fleet-sync', () => {
   if (masterServer.isCurrentMaster) {
     console.log(`New multi-room device joined, syncing fleet...`)
-    fleetPublisher.publish('fleet-update', { master: getIPAddress() })
+    fleetPublisher.publish('fleet-update', { master: process.env.MULTI_ROOM_SERVER || getIPAddress() })
   }
 })
 
