@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-snapcastrd --sc_host=localhost
+snapcastrd --port=80 --sc_host=localhost 
