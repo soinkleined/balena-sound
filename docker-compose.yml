@@ -65,6 +65,8 @@ services:
     ports:
       - "5000:5000/udp"
       - "5000:5000/tcp"
+    depends_on:
+      - snapcast-server
 
 volumes:
   spotifycache:
