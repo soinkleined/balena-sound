@@ -1,4 +1,14 @@
 - commits:
+    - subject: Add bluetooth control support
+      hash: 1eb205ab28002832af7c4f5090d712dc762734c1
+      body: ''
+      footer:
+        Change-type: major
+        change-type: major
+      author: AlexProgrammerDE
+  version: 3.0.0
+  date: 2020-06-08T13:19:35.951Z
+- commits:
     - subject: 'docs: add delay reduction troubleshooting for bluetooth-audio'
       hash: b584534e0ae08de098324a080c50d179d2999390
       body: ''
