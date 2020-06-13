@@ -65,7 +65,16 @@ services:
       - 49494:49494
     volumes:
       - snapcast:/var/cache/snapcast
+  node-ariplayhub:
+    build: ./node-ariplayhub
+    restart: on-failure
+    network_mode: host
+    ports:
+      - 8089:8089
+    volumes:
+      - node-airplayhub:/var/cache/node-airplayhub
 volumes:
   spotifycache:
   bluetoothcache:
   snapcast:
+  node-airplayhub:
