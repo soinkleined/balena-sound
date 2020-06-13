@@ -1,0 +1,18 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
+
+WORKDIR /usr/src
+
+RUN install_packages \
+  build-essential \
+  git \
+  libavahi-compat-libdnssd-dev \
+  nodejs \
+  npm \
+  nodejs-legacy 
+  
+
+COPY start.sh /usr/src/
+
+RUN npm i -g git+https://github.com/noelhibbard/node-airplayhub
+
+CMD [ "/bin/bash", "/usr/src/start.sh" ]
